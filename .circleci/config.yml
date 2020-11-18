@@ -1,0 +1,42 @@
+version: 2.1
+
+workflows:
+  main:
+    jobs:
+      - para-metrics
+  daily:
+    triggers:
+      - schedule:
+          cron: "0 10 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - para-metrics
+
+jobs:
+  para-metrics:
+    docker:
+      - image: cimg/base:2020.09
+    steps:
+      - run:
+          name: "Install Para"
+          command: |
+            PARA_VER=0.3.0
+            DL_URL="https://github.com/halseylabs/para/releases/download/v${PARA_VER}/para-v${PARA_VER}-linux-amd64.tar.gz"
+            curl -sSL $DL_URL | sudo tar -xz -C /usr/local/bin para
+      - run:
+          name: "Orb Metrics"
+          command: |
+            para fetch --orb="hubci/goreleaser"
+            para fetch --orb="hubci/md-proofer"
+            para fetch --orb="hubci/sonar"
+      - run:
+          name: "Sonar Metrics"
+          command: |
+            para fetch --github="felicianotech/sonar" --brew="felicianotech/tap/sonar"
+      - run:
+          name: "cu-ddns Metrics"
+          command: |
+            para fetch --github="cloud-unpacked/cu-ddns"
