@@ -18,7 +18,7 @@ workflows:
 jobs:
   para-metrics:
     docker:
-      - image: cimg/base:2020.09
+      - image: cimg/base:2020.12
     steps:
       - run:
           name: "Install Para"
@@ -29,9 +29,14 @@ jobs:
       - run:
           name: "Orb Metrics"
           command: |
+            echo "GoReleaser Orb:"
             para fetch --orb="hubci/goreleaser"
+            echo "MD Proofer Orb:"
             para fetch --orb="hubci/md-proofer"
+            echo "Sonar Orb:"
             para fetch --orb="hubci/sonar"
+            echo "Gotham Orb:"
+            para fetch --orb="hubci/gotham"
       - run:
           name: "Sonar Metrics"
           command: |
