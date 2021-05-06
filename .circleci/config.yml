@@ -37,6 +37,8 @@ jobs:
             para fetch --orb="hubci/sonar"
             echo "Gotham Orb:"
             para fetch --orb="hubci/gotham"
+            echo "Strawberry Orb:"
+            para fetch --orb="hubci/strawberry"
       - run:
           name: "Sonar Metrics"
           command: |
