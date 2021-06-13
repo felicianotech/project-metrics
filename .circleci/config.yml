@@ -51,3 +51,11 @@ jobs:
           name: "arc Metrics"
           command: |
             para fetch --github="hubci/arc" --brew="hubci/tap/sonar"
+      - run:
+          name: "Zoom MGR Metrics"
+          command: |
+            para fetch --github="felicianotech/zoom-mgr"
+      - run:
+          name: "Minecraft MGR Metrics"
+          command: |
+            para fetch --github="felicianotech/minecraft-mgr"
