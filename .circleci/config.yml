@@ -47,3 +47,7 @@ jobs:
           name: "cu-ddns Metrics"
           command: |
             para fetch --github="cloud-unpacked/cu-ddns"
+      - run:
+          name: "arc Metrics"
+          command: |
+            para fetch --github="hubci/arc" --brew="hubci/tap/sonar"
