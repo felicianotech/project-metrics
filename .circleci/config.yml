@@ -1,17 +1,7 @@
 version: 2.1
 
 workflows:
-  main:
-    jobs:
-      - para-metrics
-  daily:
-    triggers:
-      - schedule:
-          cron: "0 10 * * *"
-          filters:
-            branches:
-              only:
-                - trunk
+  main-wf:
     jobs:
       - para-metrics
 
