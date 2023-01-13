@@ -29,6 +29,10 @@ jobs:
             para fetch --orb="hubci/gotham"
             echo "Strawberry Orb:"
             para fetch --orb="hubci/strawberry"
+            echo "Sphere Orb:"
+            para fetch --orb="hubci/sphere"
+            echo "Warden Orb:"
+            para fetch --orb="repowarden/warden"
       - run:
           name: "Sonar Metrics"
           command: |
@@ -49,3 +53,7 @@ jobs:
           name: "Minecraft MGR Metrics"
           command: |
             para fetch --github="felicianotech/minecraft-mgr"
+      - run:
+          name: "Warden Metrics"
+          command: |
+            para fetch --github="repowarden/cli" --brew="repowarden/tap/warden"
